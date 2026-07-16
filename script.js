@@ -184,8 +184,52 @@ class TerminalEmulator {
     }
 }
 
+// Digital Clock for Mountain Time
+class MountainTimeClock {
+    constructor() {
+        this.timeDisplay = document.getElementById('time-display');
+        this.dateDisplay = document.getElementById('date-display');
+        this.updateClock();
+        setInterval(() => this.updateClock(), 1000);
+    }
+
+    updateClock() {
+        // Get current time in Mountain Time (UTC-7 or UTC-6 depending on DST)
+        const now = new Date();
+        const formatter = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'America/Denver',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false
+        });
+        
+        const dateFormatter = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'America/Denver',
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        const timeString = formatter.format(now);
+        const dateString = dateFormatter.format(now);
+
+        if (this.timeDisplay) {
+            this.timeDisplay.textContent = timeString;
+        }
+
+        if (this.dateDisplay) {
+            this.dateDisplay.textContent = dateString;
+        }
+    }
+}
+
 // Initialize Terminal
 const terminal = new TerminalEmulator();
+
+// Initialize Mountain Time Clock
+const mountainClock = new MountainTimeClock();
 
 // Auto-start the hacking session on page load
 window.addEventListener('load', () => {

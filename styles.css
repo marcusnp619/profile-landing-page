@@ -131,6 +131,82 @@ body {
     padding-bottom: 20px;
 }
 
+/* Clock Section */
+.clock-section {
+    margin-bottom: 80px;
+}
+
+.clock-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.clock-display {
+    background: rgba(10, 14, 39, 0.7);
+    border: 3px solid var(--lime);
+    border-radius: 15px;
+    padding: 50px 80px;
+    box-shadow: 0 0 50px rgba(0, 255, 0, 0.4), 
+                inset 0 0 50px rgba(0, 255, 0, 0.1),
+                0 0 30px rgba(0, 212, 255, 0.2);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    animation: clock-pulse 2s ease-in-out infinite;
+}
+
+@keyframes clock-pulse {
+    0%, 100% {
+        box-shadow: 0 0 50px rgba(0, 255, 0, 0.4), 
+                    inset 0 0 50px rgba(0, 255, 0, 0.1),
+                    0 0 30px rgba(0, 212, 255, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 80px rgba(0, 255, 0, 0.6), 
+                    inset 0 0 80px rgba(0, 255, 0, 0.2),
+                    0 0 50px rgba(0, 212, 255, 0.4);
+    }
+}
+
+.time-display {
+    font-size: 5rem;
+    font-weight: bold;
+    color: var(--lime);
+    text-shadow: 0 0 20px var(--lime), 0 0 40px var(--cyan);
+    letter-spacing: 5px;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 20px;
+    animation: time-glow 1s ease-in-out infinite;
+}
+
+@keyframes time-glow {
+    0%, 100% {
+        text-shadow: 0 0 20px var(--lime), 0 0 40px var(--cyan);
+    }
+    50% {
+        text-shadow: 0 0 40px var(--lime), 0 0 60px var(--cyan), 0 0 20px var(--magenta);
+    }
+}
+
+.date-display {
+    font-size: 1.5rem;
+    color: var(--cyan);
+    text-shadow: 0 0 15px var(--cyan);
+    margin-bottom: 15px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.timezone-label {
+    font-size: 1.2rem;
+    color: var(--magenta);
+    text-shadow: 0 0 10px var(--magenta);
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
 /* Toolkit Section */
 .toolkit-section {
     margin-bottom: 80px;
@@ -710,5 +786,21 @@ body {
 
     .visualizer-container {
         padding: 20px;
+    }
+
+    .clock-display {
+        padding: 30px 40px;
+    }
+
+    .time-display {
+        font-size: 3rem;
+    }
+
+    .date-display {
+        font-size: 1.2rem;
+    }
+
+    .timezone-label {
+        font-size: 1rem;
     }
 }
